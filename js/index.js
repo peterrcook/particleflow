@@ -40,12 +40,43 @@ var seeds = [
     },
 ];
 
-function stop(e) {
-    pf.stop();
+var pf;
+
+var datData = {
+    isRunning: true,
+    numParticles: 2000,
+    speedFactor: 1,
+    fadeFactor: 0.03
 }
 
-var pf = new ParticleFlow(document.getElementById('canvas'));
+function setUpDatGui() {
+    var gui = new dat.GUI();
 
-pf.setSeeds(seeds);
-pf.setNumberOfParticles(2000);
-pf.start();
+    gui.add(datData, 'isRunning').onChange(function(val) {
+        val ? pf.start() : pf.stop();
+    });
+
+    gui.add(datData, 'numParticles', 1, 5000).onChange(function(val) {
+        pf.setNumberOfParticles(val);
+    });
+
+    gui.add(datData, 'speedFactor', 1, 10).onChange(function(val) {
+        pf.setSpeedFactor(val);
+    });
+
+    gui.add(datData, 'fadeFactor', 0, 1).onChange(function(val) {
+        pf.setFadeFactor(val);
+    });
+}
+
+function initParticleFlow() {
+    pf = new ParticleFlow(document.getElementById('canvas'));
+
+    pf.setSeeds(seeds);
+    pf.setNumberOfParticles(datData.numParticles);
+    pf.start();
+}
+
+initParticleFlow();
+setUpDatGui();
+

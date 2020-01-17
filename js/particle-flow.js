@@ -143,6 +143,11 @@ ParticleFlow.prototype._drawParticles = function() {
 }
 
 ParticleFlow.prototype._doAnimFrame = function(t) {
+    if(!this.isRunning) {
+        this.prevT = null;
+        return;
+    }
+
     if(!this.prevT) {
         this.prevT = t;
     }
@@ -154,9 +159,7 @@ ParticleFlow.prototype._doAnimFrame = function(t) {
     this._updateParticles(deltaT);
     this._drawParticles();
 
-    if(this.isRunning) {
-        window.requestAnimationFrame(this._doAnimFrame.bind(this));
-    }
+    window.requestAnimationFrame(this._doAnimFrame.bind(this));
 
     this.prevT = t;
 }
@@ -184,6 +187,7 @@ ParticleFlow.prototype.setFadeFactor = function(f) {
 }
 
 ParticleFlow.prototype.start = function() {
+    this.isRunning = true;
     window.requestAnimationFrame(this._doAnimFrame.bind(this));
 }
 
