@@ -1,5 +1,5 @@
 var w = 800, h = 600;
-var seedRadius = 500;
+var seedRadius = 1000;
 var strengthFunction = function(dis) {
     var s = 1 - dis / seedRadius;
     return s * s;
