@@ -40,10 +40,12 @@ var seeds = [
     },
 ];
 
-var pf = new ParticleFlow({
-    canvasEl: document.getElementById('canvas')
-});
+function stop() {
+    pf.stop();
+}
+
+var pf = new ParticleFlow(document.getElementById('canvas'));
 
 pf.setSeeds(seeds);
-pf.setNumberOfParticles(100);
+pf.setNumberOfParticles(2000);
 pf.start();

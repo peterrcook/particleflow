@@ -1,11 +1,12 @@
-function ParticleFlow(config) {
-    this.canvas = config.canvasEl;
+function ParticleFlow(canvasEl) {
+    this.canvas = canvasEl;
     this.ctx = null;
     this.w = null;
     this.h = null;
     this.seeds = [];
     this.numParticles = 0;
     this.speedFactor = 1;
+    this.fadeFactor = 0.03; // Alpha value of the rectangle used to erase between frames. Low values e.g. 0.03 result in trails. Use 1 for no trails.
 
     
     this.field = null;
@@ -16,8 +17,9 @@ function ParticleFlow(config) {
     this._init();
 }
 
-
+// ------------------------------------
 // Private
+// ------------------------------------
 ParticleFlow.prototype._init = function() {
     this.w = this.canvas.clientWidth;
     this.h = this.canvas.clientHeight;
@@ -125,7 +127,7 @@ ParticleFlow.prototype._drawParticles = function() {
     var ctx = this.ctx;
 
     ctx.save();
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+    ctx.fillStyle = 'rgba(255, 255, 255, ' + this.fadeFactor + ')';
     ctx.fillRect(0, 0, this.w, this.h);
     ctx.restore();
 
@@ -160,7 +162,9 @@ ParticleFlow.prototype._doAnimFrame = function(t) {
 }
 
 
+// ------------------------------------
 // Public
+// ------------------------------------
 ParticleFlow.prototype.setSeeds = function(seeds) {
     this.seeds = seeds;
     this._updateField();    
@@ -169,6 +173,14 @@ ParticleFlow.prototype.setSeeds = function(seeds) {
 ParticleFlow.prototype.setNumberOfParticles = function(num) {
     this.numParticles = num;
     this._initParticles();
+}
+
+ParticleFlow.prototype.setSpeedFactor = function(f) {
+    this.speedFactor = f;
+}
+
+ParticleFlow.prototype.setFadeFactor = function(f) {
+    this.fadeFactor = f;
 }
 
 ParticleFlow.prototype.start = function() {
