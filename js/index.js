@@ -40,7 +40,7 @@ var seeds = [
     },
 ];
 
-function stop() {
+function stop(e) {
     pf.stop();
 }
 
