@@ -46,15 +46,12 @@ var datData = {
     isRunning: true,
     numParticles: 2000,
     speedFactor: 1,
-    fadeFactor: 0.03
+    fadeFactor: 0.03,
+    showSeeds: false
 }
 
 function setUpDatGui() {
     var gui = new dat.GUI();
-
-    gui.add(datData, 'isRunning').onChange(function(val) {
-        val ? pf.start() : pf.stop();
-    });
 
     gui.add(datData, 'numParticles', 1, 5000).onChange(function(val) {
         pf.setNumberOfParticles(val);
@@ -66,6 +63,14 @@ function setUpDatGui() {
 
     gui.add(datData, 'fadeFactor', 0, 1).onChange(function(val) {
         pf.setFadeFactor(val);
+    });
+
+    gui.add(datData, 'isRunning').onChange(function(val) {
+        val ? pf.start() : pf.stop();
+    });
+
+    gui.add(datData, 'showSeeds').onChange(function(val) {
+        pf.setShowSeeds(val);
     });
 }
 
