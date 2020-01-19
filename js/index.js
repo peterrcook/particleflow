@@ -84,4 +84,5 @@ function initParticleFlow() {
 
 initParticleFlow();
 setUpDatGui();
+updateSeeds();
 

@@ -1,0 +1,9 @@
+#canvas, #seeds {
+    position: absolute;
+    top: 0;
+}
+
+#seeds path {
+    stroke: #000;
+    stroke-width: 2;
+}
