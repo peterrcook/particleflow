@@ -1,4 +1,4 @@
-var drag = d3.drag()
+var dragCenter = d3.drag()
     .on('drag', handleDrag)
     .on('end', handleEnd);
 
@@ -39,7 +39,18 @@ function handleEndArrow() {
     pf.setSeeds(seeds);
 }
 
-function updateSeedCentres() {
+
+function seedPath(d) {
+    var path = '';
+    var r = 5;
+    path += 'M0,-' + r + ' a' + r + ',' + r + ' 0 1 1 0,' + (r * 2);
+    path += ' a' + r + ',' + r + ' 0 1 1 0,-' + (r * 2);
+    path += 'M0,0 l' + d.vx + ',' + d.vy;
+
+    return path;
+}
+
+function updateSeedCenters() {
     d3.select('svg#seeds')
         .selectAll('path.main')
         .data(seeds)
@@ -49,11 +60,10 @@ function updateSeedCentres() {
             return 'translate(' + d.x + ',' + d.y + ')';
         })
         .attr('d', seedPath)
-        .call(drag);
+        .call(dragCenter);
 }
 
 function updateSeedArrows() {
-    console.log('ends');
     d3.select('svg#seeds')
         .selectAll('path.arrow')
         .data(seeds)
@@ -70,6 +80,6 @@ function updateSeedArrows() {
 }
 
 function updateSeeds() {
-    updateSeedCentres();
+    updateSeedCenters();
     updateSeedArrows();
 }
