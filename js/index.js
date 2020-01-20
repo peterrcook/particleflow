@@ -41,6 +41,7 @@ var seeds = [
 ];
 
 var pf;
+var canvasEl = document.getElementById('canvas');
 
 var datData = {
     isRunning: true,

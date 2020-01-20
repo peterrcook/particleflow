@@ -15,13 +15,28 @@ var dragArrow = d3.drag()
     .on('drag', handleDragArrow)
     .on('end', handleEndArrow);
 
+function outsideCanvas(d) {
+    return d.x < 0 ||
+        d.x >= canvasEl.clientWidth ||
+        d.y < 0 ||
+        d.y > canvasEl.clientHeight;
+}
+
 function handleDrag(d) {
     d.x = d3.event.x;
     d.y = d3.event.y;
+
     updateSeeds();
 }
 
-function handleEnd() {
+function handleEnd(d, i) {
+    if(outsideCanvas(d)) {
+        seeds = seeds.filter(function(d, ii) {
+            return i !== ii;
+        });
+    }
+
+    updateSeeds();
     pf.setSeeds(seeds);
 }
 
