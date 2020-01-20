@@ -9,7 +9,6 @@ function ParticleFlow(canvasEl) {
     this.fadeFactor = 0.03; // Alpha value of the rectangle used to erase between frames. Low values e.g. 0.03 result in trails. Use 1 for no trails.
     this.showSeeds = false;
 
-    
     this.field = null;
     this.particles = [];
     this.prevT = null;
@@ -91,7 +90,7 @@ ParticleFlow.prototype._initParticles = function() {
             prevY: pt.y,
             x: pt.x,
             y: pt.y
-        });  
+        });
     }
 }
 
@@ -220,3 +219,6 @@ ParticleFlow.prototype.start = function() {
 ParticleFlow.prototype.stop = function() {
     this.isRunning = false;
 }
+
+
+export default ParticleFlow;
