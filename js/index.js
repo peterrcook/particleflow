@@ -48,6 +48,7 @@ var datData = {
     numParticles: 2000,
     speedFactor: 1,
     fadeFactor: 0.03,
+    seedRadius: 1000,
     showSeeds: false
 }
 
@@ -64,6 +65,14 @@ function setUpDatGui() {
 
     gui.add(datData, 'fadeFactor', 0, 1).onChange(function(val) {
         pf.setFadeFactor(val);
+    });
+
+    gui.add(datData, 'seedRadius', 1, 2000).onChange(function(val) {
+        seedRadius = val;
+        seeds.forEach(function(d) {
+            d.r = val;
+        });
+        pf.setSeeds(seeds);
     });
 
     gui.add(datData, 'isRunning').onChange(function(val) {
