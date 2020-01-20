@@ -1,0 +1,25 @@
+{
+  "name": "particle-flow",
+  "version": "1.0.0",
+  "description": "Particle flow library in JavaScript (renders to Canvas)",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterrcook/particleflow.git"
+  },
+  "keywords": [
+    "particles",
+    "flow",
+    "velocity",
+    "field"
+  ],
+  "author": "Peter Cook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peterrcook/particleflow/issues"
+  },
+  "homepage": "https://github.com/peterrcook/particleflow#readme"
+}
