@@ -15,6 +15,14 @@ var dragArrow = d3.drag()
     .on('drag', handleDragArrow)
     .on('end', handleEndArrow);
 
+var dragSvg = d3.drag()
+    .on('drag', handleDragSvg)
+    .on('end', handleEndSvg);
+
+d3.select('svg#seeds')
+    .call(dragSvg);
+
+
 function outsideCanvas(d) {
     return d.x < 0 ||
         d.x >= canvasEl.clientWidth ||
@@ -22,6 +30,8 @@ function outsideCanvas(d) {
         d.y > canvasEl.clientHeight;
 }
 
+
+// Seed drag handlers
 function handleDrag(d) {
     d.x = d3.event.x;
     d.y = d3.event.y;
@@ -55,6 +65,28 @@ function handleEndArrow() {
 }
 
 
+// Canvas drag (for seed creation)
+function handleDragSvg() {
+}
+
+function handleEndSvg() {
+    var e = d3.event;
+
+    seeds.push({
+        x: e.subject.x,
+        y: e.subject.y,
+        vx: e.x - e.subject.x,
+        vy: e.y - e.subject.y,
+        r: seedRadius,
+        strength: strengthFunction
+    });
+
+    updateSeeds();
+    pf.setSeeds(seeds);
+}
+
+
+// Seed rendering
 function seedPath(d) {
     var path = '';
     var r = 5;
