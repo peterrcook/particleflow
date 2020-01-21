@@ -2,7 +2,7 @@
   "name": "particle-flow",
   "version": "1.0.0",
   "description": "Particle flow library in JavaScript (renders to Canvas)",
-  "main": "src/index.js",
+  "main": "dist/particle-flow.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
