@@ -108,9 +108,9 @@ ParticleFlow.prototype._updateParticles = function(dt) {
         p.y = p.y + dt * f[1];
 
         var isZeroVelocity = f[0] === 0 && f[1] === 0;
-        var isOutOfBounds = p.x < 0 || p.x >= w || p.y < 0 || p.y >= h;
+        var isOutOfBounds = p.x < 0 || p.x >= this.w || p.y < 0 || p.y >= this.h;
         if(isZeroVelocity || isOutOfBounds) {
-            var pt = this._getRandomPoint(w, h);
+            var pt = this._getRandomPoint(this.w, this.h);
             p.x = p.prevX = pt.x;
             p.y = p.prevY = pt.y;
         }

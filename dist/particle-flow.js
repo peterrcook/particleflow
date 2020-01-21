@@ -15,7 +15,6 @@
         this.fadeFactor = 0.03; // Alpha value of the rectangle used to erase between frames. Low values e.g. 0.03 result in trails. Use 1 for no trails.
         this.showSeeds = false;
 
-        
         this.field = null;
         this.particles = [];
         this.prevT = null;
@@ -97,7 +96,7 @@
                 prevY: pt.y,
                 x: pt.x,
                 y: pt.y
-            });  
+            });
         }
     };
 
@@ -115,9 +114,9 @@
             p.y = p.y + dt * f[1];
 
             var isZeroVelocity = f[0] === 0 && f[1] === 0;
-            var isOutOfBounds = p.x < 0 || p.x >= w || p.y < 0 || p.y >= h;
+            var isOutOfBounds = p.x < 0 || p.x >= this.w || p.y < 0 || p.y >= this.h;
             if(isZeroVelocity || isOutOfBounds) {
-                var pt = this._getRandomPoint(w, h);
+                var pt = this._getRandomPoint(this.w, this.h);
                 p.x = p.prevX = pt.x;
                 p.y = p.prevY = pt.y;
             }
