@@ -1,6 +1,6 @@
 {
   "name": "particle-flow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Particle flow library in JavaScript (renders to Canvas)",
   "main": "dist/particle-flow.js",
   "scripts": {
