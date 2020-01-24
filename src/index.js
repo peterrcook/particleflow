@@ -6,6 +6,7 @@ function ParticleFlow(canvasEl) {
     this.seeds = [];
     this.numParticles = 0;
     this.speedFactor = 1;
+    this.fadeColor = '#fff'; // Color used to erase canvas between frames
     this.fadeFactor = 0.03; // Alpha value of the rectangle used to erase between frames. Low values e.g. 0.03 result in trails. Use 1 for no trails.
     this.showSeeds = false;
 
@@ -127,7 +128,8 @@ ParticleFlow.prototype._drawParticles = function() {
     var ctx = this.ctx;
 
     ctx.save();
-    ctx.fillStyle = 'rgba(255, 255, 255, ' + this.fadeFactor + ')';
+    ctx.globalAlpha = this.fadeFactor;
+    ctx.fillStyle = this.fadeColor;
     ctx.fillRect(0, 0, this.w, this.h);
     ctx.restore();
 
@@ -201,6 +203,10 @@ ParticleFlow.prototype.setNumberOfParticles = function(num) {
 
 ParticleFlow.prototype.setSpeedFactor = function(f) {
     this.speedFactor = f;
+}
+
+ParticleFlow.prototype.setFadeColor = function(col) {
+  this.fadeColor = col;
 }
 
 ParticleFlow.prototype.setFadeFactor = function(f) {

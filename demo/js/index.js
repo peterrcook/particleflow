@@ -89,6 +89,7 @@ function initParticleFlow() {
 
     pf.setSeeds(seeds);
     pf.setNumberOfParticles(datData.numParticles);
+    pf.setFadeColor('#fff');
     pf.start();
 }
 
