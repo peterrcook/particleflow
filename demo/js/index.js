@@ -4,6 +4,7 @@ var strengthFunction = function(dis) {
     var s = 1 - dis / seedRadius;
     return s * s;
 }
+var showSeeds = true;
 
 var seeds = [
     {
@@ -46,11 +47,11 @@ var canvasEl = document.getElementById('canvas');
 var datData = {
     isRunning: true,
     numParticles: 2000,
-    particleColor: '#000',
+    particleColor: '#fff',
     speedFactor: 1,
     fadeFactor: 0.03,
     seedRadius: 1000,
-    showSeeds: false
+    showSeeds: true
 }
 
 function setUpDatGui() {
@@ -85,7 +86,8 @@ function setUpDatGui() {
     });
 
     gui.add(datData, 'showSeeds').onChange(function(val) {
-        pf.setShowSeeds(val);
+        showSeeds = val;
+        updateSeeds();
     });
 }
 
@@ -94,7 +96,8 @@ function initParticleFlow() {
 
     pf.setSeeds(seeds);
     pf.setNumberOfParticles(datData.numParticles);
-    pf.setFadeColor('#fff');
+    pf.setFadeColor('#000');
+    pf.setParticleColor('#fff');
     pf.start();
 }
 

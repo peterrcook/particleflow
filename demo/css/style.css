@@ -1,9 +1,18 @@
+body {
+    background-color: black;
+}
+
 #canvas, #seeds {
     position: absolute;
     top: 0;
 }
 
 #seeds path {
-    stroke: #000;
+    fill: yellow;
+    stroke: yellow;
     stroke-width: 2;
+}
+
+#seeds path:hover {
+    opacity: 0.75;
 }

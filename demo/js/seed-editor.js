@@ -89,7 +89,7 @@ function handleEndSvg() {
 // Seed rendering
 function seedPath(d) {
     var path = '';
-    var r = 5;
+    var r = 6;
     path += 'M0,-' + r + ' a' + r + ',' + r + ' 0 1 1 0,' + (r * 2);
     path += ' a' + r + ',' + r + ' 0 1 1 0,-' + (r * 2);
     path += 'M0,0 l' + d.vx + ',' + d.vy;
@@ -122,11 +122,14 @@ function updateSeedArrows() {
             var dis = Math.sqrt(d.vx * d.vx + d.vy * d.vy);
             return 'translate(' + (d.x + d.vx) + ',' + (d.y + d.vy) + ')rotate(' + rot + ')';
         })
-        .attr('d', 'M0,-5 l8,5 l-8,5 z')
+        .attr('d', 'M0,-7 l10,7 l-10,7 z')
         .call(dragArrow);
 }
 
 function updateSeeds() {
+    d3.select('svg')
+        .style('display', showSeeds ? 'inline' : 'none');
+
     updateSeedCenters();
     updateSeedArrows();
 }
