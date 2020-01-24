@@ -14,6 +14,7 @@
       this.speedFactor = 1;
       this.fadeColor = '#fff'; // Color used to erase canvas between frames
       this.fadeFactor = 0.03; // Alpha value of the rectangle used to erase between frames. Low values e.g. 0.03 result in trails. Use 1 for no trails.
+      this.particleColor = '#000';
       this.showSeeds = false;
 
       this.field = null;
@@ -139,6 +140,8 @@
       ctx.fillRect(0, 0, this.w, this.h);
       ctx.restore();
 
+      ctx.strokeStyle = this.particleColor;
+
       for(var i = 0; i < this.numParticles; i++) {
           var p = this.particles[i];
 
@@ -217,6 +220,10 @@
 
   ParticleFlow.prototype.setFadeFactor = function(f) {
       this.fadeFactor = f;
+  };
+
+  ParticleFlow.prototype.setParticleColor = function(col) {
+      this.particleColor = col;
   };
 
   ParticleFlow.prototype.setShowSeeds = function(s) {

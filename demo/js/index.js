@@ -46,6 +46,7 @@ var canvasEl = document.getElementById('canvas');
 var datData = {
     isRunning: true,
     numParticles: 2000,
+    particleColor: '#000',
     speedFactor: 1,
     fadeFactor: 0.03,
     seedRadius: 1000,
@@ -57,6 +58,10 @@ function setUpDatGui() {
 
     gui.add(datData, 'numParticles', 1, 5000).onChange(function(val) {
         pf.setNumberOfParticles(val);
+    });
+
+    gui.addColor(datData, 'particleColor').onChange(function(val) {
+        pf.setParticleColor(val);
     });
 
     gui.add(datData, 'speedFactor', 1, 10).onChange(function(val) {
