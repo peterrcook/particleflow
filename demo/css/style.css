@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    font-family: sans-serif;
 }
 
 #canvas, #seeds {
@@ -15,4 +16,8 @@ body {
 
 #seeds path:hover {
     opacity: 0.75;
+}
+
+#seeds text {
+    fill: yellow;
 }
