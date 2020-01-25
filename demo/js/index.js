@@ -1,5 +1,5 @@
 var w = 800, h = 600;
-var seedRadius = 500;
+var seedRadius = 300;
 var strengthFunction = function(dis) {
     var s = 1 - dis / seedRadius;
     return s * s;
@@ -50,7 +50,7 @@ var datData = {
     particleColor: '#fff',
     speedFactor: 1,
     fadeFactor: 0.03,
-    seedRadius: 500,
+    seedRadius: 300,
     showSeeds: true
 }
 
