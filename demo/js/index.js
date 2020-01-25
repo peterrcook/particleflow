@@ -65,7 +65,7 @@ function setUpDatGui() {
         pf.setParticleColor(val);
     });
 
-    gui.add(datData, 'speedFactor', 1, 10).onChange(function(val) {
+    gui.add(datData, 'speedFactor', -5, 5).onChange(function(val) {
         pf.setSpeedFactor(val);
     });
 
