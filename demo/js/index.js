@@ -1,5 +1,5 @@
-var w = 800, h = 600;
-var seedRadius = 300;
+var w = window.innerWidth, h = window.innerHeight;
+var seedRadius = 600;
 var strengthFunction = function(dis) {
     var s = 1 - dis / seedRadius;
     return s * s;
@@ -11,7 +11,7 @@ var seeds = [
         x: 0.15 * w,
         y: 0.25 * h,
         vx: 70, // velocities in pixels / sec
-        vy: 20,
+        vy: -20,
         r: seedRadius,
         strength: strengthFunction
     },
@@ -46,11 +46,11 @@ var canvasEl = document.getElementById('canvas');
 
 var datData = {
     isRunning: true,
-    numParticles: 2000,
+    numParticles: 2500,
     particleColor: '#fff',
     speedFactor: 1,
     fadeFactor: 0.03,
-    seedRadius: 300,
+    seedRadius: 600,
     showSeeds: true
 }
 
@@ -93,7 +93,7 @@ function setUpDatGui() {
 }
 
 function initParticleFlow() {
-    pf = new ParticleFlow(document.getElementById('canvas'));
+    pf = new ParticleFlow(canvasEl);
 
     pf.setSeeds(seeds);
     pf.setNumberOfParticles(datData.numParticles);
@@ -102,6 +102,15 @@ function initParticleFlow() {
     pf.start();
 }
 
+function updateDimensions() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    canvasEl.setAttribute('width', w);
+    canvasEl.setAttribute('height', h);
+}
+
+updateDimensions();
 initParticleFlow();
 setUpDatGui();
 updateSeeds();

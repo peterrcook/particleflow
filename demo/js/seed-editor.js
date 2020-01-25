@@ -142,7 +142,9 @@ function updateSeedArrows() {
 
 function updateSeeds() {
     d3.select('svg')
-        .style('display', showSeeds ? 'inline' : 'none');
+        .style('display', showSeeds ? 'inline' : 'none')
+        .attr('width', w)
+        .attr('height', h);
 
     updateSeedCenters();
     updateSeedRadii();
