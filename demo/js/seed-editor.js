@@ -110,6 +110,20 @@ function updateSeedCenters() {
         .call(dragCenter);
 }
 
+function updateSeedRadii() {
+    d3.select('svg#seeds')
+        .selectAll('circle.radius')
+        .data(seeds)
+        .join('circle')
+        .classed('radius', true)
+        .attr('transform', function(d) {
+            return 'translate(' + d.x + ',' + d.y + ')';
+        })
+        .attr('r', function(d) {
+            return d.r;
+        });
+}
+
 function updateSeedArrows() {
     d3.select('svg#seeds')
         .selectAll('path.arrow')
@@ -131,5 +145,6 @@ function updateSeeds() {
         .style('display', showSeeds ? 'inline' : 'none');
 
     updateSeedCenters();
+    updateSeedRadii();
     updateSeedArrows();
 }

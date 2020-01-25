@@ -18,6 +18,12 @@ body {
     opacity: 0.75;
 }
 
+#seeds .radius {
+    fill: none;
+    stroke: yellow;
+    opacity: 0.5;
+}
+
 #seeds text {
     fill: yellow;
 }

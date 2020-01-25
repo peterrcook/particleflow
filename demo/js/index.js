@@ -79,6 +79,7 @@ function setUpDatGui() {
             d.r = val;
         });
         pf.setSeeds(seeds);
+        updateSeeds();
     });
 
     gui.add(datData, 'isRunning').onChange(function(val) {
