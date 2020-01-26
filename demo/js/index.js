@@ -48,6 +48,7 @@ var datData = {
     isRunning: true,
     numParticles: 2500,
     particleColor: '#fff',
+    particleSize: 1,
     speedFactor: 1,
     fadeFactor: 0.03,
     seedRadius: 600,
@@ -63,6 +64,10 @@ function setUpDatGui() {
 
     gui.addColor(datData, 'particleColor').onChange(function(val) {
         pf.setParticleColor(val);
+    });
+
+    gui.add(datData, 'particleSize', 0.5, 20).onChange(function(val) {
+        pf.setParticleSize(val);
     });
 
     gui.add(datData, 'speedFactor', -5, 5).onChange(function(val) {
@@ -114,4 +119,3 @@ updateDimensions();
 initParticleFlow();
 setUpDatGui();
 updateSeeds();
-
